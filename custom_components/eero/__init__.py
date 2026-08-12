@@ -437,12 +437,13 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     coordinator = DataUpdateCoordinator(
         hass=hass,
+        config_entry=config_entry,
         logger=_LOGGER,
         name=f"Eero ({data[CONF_NAME]})",
         update_method=async_update_data,
         update_interval=timedelta(seconds=conf_scan_interval),
     )
-    await coordinator.async_refresh()
+    await coordinator.async_config_entry_first_refresh()
 
     for network in coordinator.data.networks:
         if conf_miscellaneous_network := conf_miscellaneous.get(network.id):
