@@ -2,6 +2,16 @@
 # Eero Home Assistant Integration
 Custom component to allow control of Eero networks in [Home Assistant](https://home-assistant.io).
 
+> **This is a fork.** Upstream [schmittx/home-assistant-eero](https://github.com/schmittx/home-assistant-eero)
+> has been dormant since September 2025 with a queue of unmerged fixes. This fork carries those
+> fixes so the integration keeps working on current Home Assistant and Python releases.
+>
+> Included on top of upstream `1.8.1`:
+> - [#171](https://github.com/schmittx/home-assistant-eero/pull/171) — brightness-0 bug, `conf_activity` KeyError guard, dead code, typos (carries [#169](https://github.com/schmittx/home-assistant-eero/pull/169) Python 3.14 device-cleanup KeyError and [#170](https://github.com/schmittx/home-assistant-eero/pull/170) `BaseScannerEntity` for HA 2026.7+)
+> - [#148](https://github.com/schmittx/home-assistant-eero/pull/148) — entities report unavailable when their resource disappears, instead of silently falling back to network data
+> - [#174](https://github.com/schmittx/home-assistant-eero/pull/174) — `band`, `channel` and `channel_width` attributes on wireless client trackers
+> - [#1](https://github.com/mikesten/home-assistant-eero/pull/1) (this fork) — retry setup instead of failing hard when the first refresh fails, so a transient DNS or API outage no longer leaves the entry permanently dead
+
 ## Credit
 - [@343max's eero-client project](https://github.com/343max/eero-client) - Basic API auth and refresh methods
 - [@jrlucier's eero_tracker project](https://github.com/jrlucier/eero_tracker) - Initial Home Assistant idea
